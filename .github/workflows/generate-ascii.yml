@@ -13,12 +13,14 @@ jobs:
       run: ls
 
   test_job2:
+    needs: build_job1
     runs-on: ubuntu-latest
     steps:
     - name: list
       run: ls -ltra
 
   deploy_job3:
+    needs: test_job2
     runs-on: ubuntu-latest
     steps:
     - name: list files
