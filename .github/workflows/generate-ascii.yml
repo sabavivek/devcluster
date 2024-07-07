@@ -10,12 +10,23 @@ jobs:
     - name: Checkout Repo
       uses: actions/checkout@v4
     - name: Execute shell script
-      run: ls
+      run: |
+        touch dragon.txt
+        echo "test" > dragon.txt
+    - name: Upload file
+      uses: actions/upload-artifact@v3
+      with:
+        name: dragon text file
+        path: dragon.txt
 
   test_job2:
     needs: build_job1
     runs-on: ubuntu-latest
     steps:
+    - name: Download file
+      uses: actions/download-artifact@v3
+      with:
+        name: dragon text file
     - name: list
       run: ls -ltra
 
