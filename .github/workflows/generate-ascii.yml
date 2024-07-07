@@ -4,15 +4,36 @@ on:
    push
 
 jobs:
-  ascii_jobs:
+  build_job1:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout Repo
       uses: actions/checkout@v4
     - name: Execute shell script
-      run: |
-        chmod +x ascii-script.sh
-        ./ascii-script.sh
+      run: ls
+
+  test_job2:
+    runs-on: ubuntu-latest
+    steps:
+    - name: list
+      run: ls -ltra
+
+  deploy_job3:
+    runs-on: ubuntu-latest
+    steps:
+    - name: list files
+      run: ls -al
+
+# jobs:
+#   ascii_jobs:
+#     runs-on: ubuntu-latest
+#     steps:
+#     - name: Checkout Repo
+#       uses: actions/checkout@v4
+#     - name: Execute shell script
+#       run: |
+#         chmod +x ascii-script.sh
+#         ./ascii-script.sh
     
     # - name: Install cowsay program
     #   run: sudo apt-get install cowsay -y
